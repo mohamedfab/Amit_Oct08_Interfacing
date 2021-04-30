@@ -1,13 +1,14 @@
 /*
  * Dio_Private.h
- *
  *  Created on: Apr 24, 2021
- *      Author: Eng_Fawzi
+ *  Author: Eng_Fawzi
  */
 
 #ifndef DIO_PRIVATE_H_
 #define DIO_PRIVATE_H_
 
+#include "Std_Types.h"
+/* Group A Registers */
 #define DIO_PORTA_REG  (*((volatile u8*)0x3B))
 #define DIO_DDRA_REG   (*((volatile u8*)0x3A))
 #define DIO_PINA_REG   (*((volatile u8*)0x39))

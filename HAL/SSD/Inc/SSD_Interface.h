@@ -1,0 +1,17 @@
+/*
+ * SSD_Interface.h
+ *
+ *  Created on: May 1, 2021
+ *      Author: Eng_Fawzi
+ */
+
+#ifndef HAL_SSD_INC_SSD_INTERFACE_H_
+#define HAL_SSD_INC_SSD_INTERFACE_H_
+
+#include "Dio_Interface.h"
+#include "util/delay.h"
+#define SSD_MASK		(0xF0)
+void SSD_Init(void);
+void SSD_Display(u8 num);
+
+#endif /* HAL_SSD_INC_SSD_INTERFACE_H_ */

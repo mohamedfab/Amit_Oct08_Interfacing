@@ -6,6 +6,7 @@
  */
 
 #include "Dio_Interface.h"
+
 void Dio_ConfigChannel(Dio_Port port,Dio_Channel channel, Dio_Direction direction)
 {
 	switch (port)
@@ -135,4 +136,68 @@ Dio_Level Dio_ReadChannel(Dio_Port port,Dio_Channel channel)
 		break;
 	}
 	return ret_level;
+}
+void Dio_WriteChannels(Dio_Port port,u8 value,u8 mask)
+{
+	switch (port)
+	{
+	case DIO_PORTA:
+		DIO_PORTA_REG= (DIO_PORTA_REG & ~mask)|(value & mask);
+		break;
+	case DIO_PORTB:
+		DIO_PORTB_REG= (DIO_PORTB_REG & ~mask)|(value & mask);
+		break;
+	case DIO_PORTC:
+		DIO_PORTC_REG= (DIO_PORTC_REG & ~mask)|(value & mask);
+		break;
+	case DIO_PORTD:
+		DIO_PORTD_REG= (DIO_PORTD_REG & ~mask)|(value & mask);
+		break;
+	}
+}
+void Dio_ConfigChannels(Dio_Port port,u8 mask,Dio_Direction direction)
+{
+	switch (port)
+	{
+	case DIO_PORTA:
+		if (direction == INPUT)
+		{
+			DIO_DDRA_REG= (DIO_DDRA_REG & ~mask);
+		}
+		else
+		{
+			DIO_DDRA_REG |= mask;
+		}
+		break;
+	case DIO_PORTB:
+		if (direction == INPUT)
+		{
+			DIO_DDRB_REG= (DIO_DDRB_REG & ~mask);
+		}
+		else
+		{
+			DIO_DDRB_REG |= mask;
+		}
+		break;
+	case DIO_PORTC:
+		if (direction == INPUT)
+		{
+			DIO_DDRC_REG= (DIO_DDRC_REG & ~mask);
+		}
+		else
+		{
+			DIO_DDRC_REG |= mask;
+		}
+		break;
+	case DIO_PORTD:
+		if (direction == INPUT)
+		{
+			DIO_DDRD_REG= (DIO_DDRD_REG & ~mask);
+		}
+		else
+		{
+			DIO_DDRD_REG |= mask;
+		}
+		break;
+	}
 }

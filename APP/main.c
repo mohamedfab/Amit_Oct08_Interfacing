@@ -6,15 +6,28 @@
 #include <util/delay.h>
 #include "Bit_Math.h"
 #include "Led_Interface.h"
+#include "Button_Interface.h"
 int main ()
 {
 	Led_Init();
+	Button_Init();
 	while (1)
 	{
-		Led_ON(LED0);
-		_delay_ms(500);
-		Led_OFF(LED0);
-		_delay_ms(500);
+		if (Button_Pressed(BUTTON0) == TRUE)
+		{
+			_delay_ms(250);
+			Led_Toggle(LED0);
+		}
+		if (Button_Pressed(BUTTON1) == TRUE)
+		{
+			_delay_ms(250);
+			Led_Toggle(LED1);
+		}
+		if (Button_Pressed(BUTTON2) == TRUE)
+		{
+			_delay_ms(250);
+			Led_Toggle(LED2);
+		}
 	}
 	return 0;
 }

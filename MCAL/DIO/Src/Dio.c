@@ -98,6 +98,24 @@ void Dio_WriteChannel(Dio_Port port,Dio_Channel channel, Dio_Level level)
 		break;
 	}
 }
+void Dio_FlipChannel(Dio_Port port,Dio_Channel channel)
+{
+	switch (port)
+	{
+	case DIO_PORTA:
+		TOGGLE_BIT(DIO_PORTA_REG,channel);
+		break;
+	case DIO_PORTB:
+		TOGGLE_BIT(DIO_PORTB_REG,channel);
+		break;
+	case DIO_PORTC:
+		TOGGLE_BIT(DIO_PORTC_REG,channel);
+		break;
+	case DIO_PORTD:
+		TOGGLE_BIT(DIO_PORTD_REG,channel);
+		break;
+	}
+}
 Dio_Level Dio_ReadChannel(Dio_Port port,Dio_Channel channel)
 {
 	Dio_Level ret_level;

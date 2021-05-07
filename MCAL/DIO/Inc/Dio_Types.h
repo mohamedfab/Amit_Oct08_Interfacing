@@ -1,9 +1,8 @@
-/*
+/**************************************
  * Dio_Types.h
- *
- *  Created on: Apr 30, 2021
- *      Author: Eng_Fawzi
- */
+ * Created on: Apr 30, 2021
+ * Author: Eng_Fawzi
+ **************************************/
 
 #ifndef DIO_TYPES_H_
 #define DIO_TYPES_H_

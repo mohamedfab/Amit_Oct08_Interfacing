@@ -1,9 +1,7 @@
-/************************************************
- * main.c
- * LAP003: Display #25 on SSD.
- * Created on: April 23, 2021.
- * Author: Eng_Fawzi.
- * **********************************************/
+/*************************************
+ * Project(1-1)
+ * Author: Eng_Fawzi
+ *************************************/
 #include <avr/io.h>
 #include <util/delay.h>
 #include "Std_Types.h"
@@ -87,6 +85,3 @@ int main ()
 	}
 	return 0;
 }
-
-
-

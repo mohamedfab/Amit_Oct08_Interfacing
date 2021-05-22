@@ -5,13 +5,36 @@
  ************************************/
 
 #include "Lcd_Interface.h"
-
+u8 customChar[NO_CSTOM_CHAR][NO_CSTOM_CHAR_BYTES]=
+{
+		{0x0A,0x1F,0x1F,0x1F,0x1F,0x0E,0x04,0x00},	/* Heart symbol	 */
+		{0x04,0x1F,0x11,0x11,0x11,0x11,0x11,0x1F},	/* Empty battery */
+		{0x04,0x1F,0x11,0x11,0x11,0x11,0x1F,0x1F},	/*	20% battery  */
+		{0x04,0x1F,0x11,0x11,0x11,0x1F,0x1F,0x1F},  /*	40% battery  */
+		{0x04,0x1F,0x11,0x11,0x1F,0x1F,0x1F,0x1F},	/*	60% battery  */
+		{0x04,0x1F,0x11,0x1F,0x1F,0x1F,0x1F,0x1F},	/*	80% battery  */
+		{0x04,0x1F,0x1F,0x1F,0x1F,0x1F,0x1F,0x1F},	/*	100% battery */
+		{0x00,0x00,0x01,0x01,0x05,0x05,0x15,0x15},	/*	Mobile Signal*/
+};
 static void Lcd_EnablePulse(void)
 {
 	Dio_WriteChannel(LCD_EN_PORT, LCD_EN_CHANNEL, STD_HIGH);
 	_delay_ms(1);
 	Dio_WriteChannel(LCD_EN_PORT, LCD_EN_CHANNEL, STD_LOW);
 	_delay_ms(2);
+}
+static void Lcd_WriteCustom(void)
+{
+	u8 loc_ByteIndex=0;
+	u8 loc_CharIndx=0;
+	for (loc_CharIndx=0;loc_CharIndx<NO_CSTOM_CHAR;loc_CharIndx++)
+	{
+		Lcd_Cmd(_LCD_CGRAM_START_ADDRESS +(loc_CharIndx*8));
+			for (loc_ByteIndex =0; loc_ByteIndex<NO_CSTOM_CHAR_BYTES;loc_ByteIndex++)
+			{
+				Lcd_DisplayChr(customChar[loc_CharIndx][loc_ByteIndex]);
+			}
+	}
 }
 void Lcd_Init(void)
 {
@@ -29,8 +52,9 @@ void Lcd_Init(void)
 	_delay_us(100);
 	Lcd_Cmd(0x03);
 	Lcd_Cmd(0x02);
-	Lcd_Cmd(0x02);
 	Lcd_Cmd(_LCD_4BIT_MODE);
+	Lcd_WriteCustom();
+	Lcd_GoToRowColumn(0, 0);
 }
 void Lcd_Cmd(LcdCmdType cmd)
 {

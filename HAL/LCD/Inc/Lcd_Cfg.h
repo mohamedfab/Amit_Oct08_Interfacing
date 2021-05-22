@@ -19,4 +19,6 @@
 #define LCD_DATA_PORT			DIO_PORTA
 #define LCD_MASK				(0xF0)
 
+#define NO_CSTOM_CHAR		(8)
+#define NO_CSTOM_CHAR_BYTES (8)
 #endif /* HAL_LCD_INC_LCD_CFG_H_ */

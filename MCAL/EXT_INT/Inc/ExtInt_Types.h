@@ -1,9 +1,8 @@
-/*
+/************************************
  * ExtInt_Types.h
- *
  *  Created on: May 22, 2021
- *      Author: Eng_Fawzi
- */
+ *  Author: Eng_Fawzi
+ ************************************/
 
 #ifndef MCAL_EXT_INT_INC_EXTINT_TYPES_H_
 #define MCAL_EXT_INT_INC_EXTINT_TYPES_H_

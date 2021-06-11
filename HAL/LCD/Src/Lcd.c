@@ -103,3 +103,25 @@ void Lcd_DisplayStr(u8* str)
 		str++;
 	}
 }
+void Lcd_DisplayInt(s32 intNum)
+{
+	if (intNum<0)
+	{
+		Lcd_DisplayChr('-');
+		intNum=intNum*-1;
+	}
+	else if (intNum == 0)
+	{
+		Lcd_DisplayChr('0');
+		return;
+	}
+	else
+	{
+		/*	Do Nothing	*/
+	}
+	Lcd_DisplayChr(intNum/10000+'0');
+	Lcd_DisplayChr(intNum%10000/1000+'0');
+	Lcd_DisplayChr(intNum%10000%1000/100+'0');
+	Lcd_DisplayChr(intNum%10000%1000%100/10+'0');
+	Lcd_DisplayChr(intNum%10000%1000%100%10+'0');
+}

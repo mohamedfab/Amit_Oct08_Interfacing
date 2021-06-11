@@ -18,4 +18,5 @@ void Lcd_Data(u8 data);
 void Lcd_DisplayChr(u8 chr);
 void Lcd_DisplayStr(u8* str);
 void Lcd_GoToRowColumn(u8 row,u8 column);
+void Lcd_DisplayInt(s32 num);
 #endif /* HAL_LCD_INC_LCD_INTERFACE_H_ */

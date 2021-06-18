@@ -1,25 +1,26 @@
-/*************************************
- * Project(1-2)
- * Author: Eng_Fawzi
- *************************************/
-#include <util/delay.h>
-#include <Wdg_Interface.h>
-#include "avr/interrupt.h"
-#include "GlblInterrupt_Interface.h"
+
+#include <avr/io.h>		/* Include AVR std. library file */
+#include <stdio.h>		/* Include std. library file */
+#include <util/delay.h>		/* Include Delay header file */
+#include <Uart_Interface.h>
 #include "Led_Interface.h"
-#include "Lcd_Interface.h"
-#include "Wdg_Interface.h"
-#include "avr/io.h"
-int main ()
+int main(void)
 {
+	u8 uartRead;
 	Led_Init();
-	WDG_ON();
-	Led_ON(LED0);
-	_delay_ms(1500);
-	Led_OFF(LED0);
+	UART_Init(UART_BAUDRATE_9600);
+	UART_TransmitStr("Hello UART.............");
 	while(1)
 	{
-		asm("WDR");
+		uartRead = UART_ReceiveChr();
+
+		if (uartRead == 'm')
+		{
+			Led_Toggle(LED0);
+		}
+		else if (uartRead == 'l')
+		{
+			Led_Toggle(LED1);
+		}
 	}
-	return 0;
 }

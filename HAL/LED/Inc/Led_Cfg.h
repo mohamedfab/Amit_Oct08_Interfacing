@@ -19,8 +19,7 @@
 #define LED2_CHANNEL	DIO_CHANNEL3
 
 /*	LEDs HW Connection	*/
-#define FORWARD      	(0)
-#define REVERSE			(1)
+
 
 #define LED0_CONNECTION	FORWARD
 #define LED1_CONNECTION	FORWARD

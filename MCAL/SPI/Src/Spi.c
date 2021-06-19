@@ -79,7 +79,7 @@ u8 Spi_MasterTranseve(u8 data)
 	{
 		;
 	}
-		/*	flush the data register	*/
+	/*	flush the data register	*/
 	return SPI_SPDR_REG;
 }
 u8 Spi_SlaveRead(void)
